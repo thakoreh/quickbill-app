@@ -12,54 +12,42 @@ export default function Navbar({ showEditor, setShowEditor }: NavbarProps) {
   const { dark, toggle } = useTheme();
 
   return (
-    <nav className="sticky top-0 z-50 glass no-print">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <button
-            onClick={() => setShowEditor(false)}
-            className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
-          >
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }}>
-              <FileText className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold">
-              Quick<span className="gradient-text-static">Bill</span>
-            </span>
-          </button>
-
-          <div className="flex items-center gap-3">
-            {showEditor && (
-              <button
-                onClick={() => setShowEditor(false)}
-                className="flex items-center gap-1.5 text-sm px-3 py-2 rounded-xl transition-all"
-                style={{ color: 'var(--muted-foreground)' }}
-                onMouseEnter={e => e.currentTarget.style.background = 'var(--muted)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Home
-              </button>
-            )}
-            <button
-              onClick={toggle}
-              className="p-2.5 rounded-xl transition-all"
-              style={{ color: 'var(--muted-foreground)' }}
-              onMouseEnter={e => e.currentTarget.style.background = 'var(--muted)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              aria-label="Toggle theme"
-            >
-              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            {!showEditor && (
-              <button
-                onClick={() => setShowEditor(true)}
-                className="btn-primary text-sm px-5 py-2.5"
-              >
-                <span className="flex items-center gap-1.5">Create Invoice</span>
-              </button>
-            )}
+    <nav className="glass-nav no-print" style={{ position: 'sticky', top: 0, zIndex: 50 }}>
+      <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
+        <button
+          onClick={() => setShowEditor(false)}
+          style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
+          <div style={{ width: 28, height: 28, borderRadius: 5, background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <FileText style={{ width: 15, height: 15, color: '#fff' }} />
           </div>
+          <span style={{ fontSize: 16, fontWeight: 400, color: 'var(--heading)', fontFeatureSettings: '"ss01"' }}>
+            Quick<span style={{ color: 'var(--primary)' }}>Bill</span>
+          </span>
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {showEditor && (
+            <button
+              onClick={() => setShowEditor(false)}
+              className="btn-ghost"
+              style={{ padding: '6px 12px', fontSize: 13 }}
+            >
+              <ArrowLeft style={{ width: 14, height: 14 }} /> Home
+            </button>
+          )}
+          <button
+            onClick={toggle}
+            style={{ padding: 8, borderRadius: 6, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--body)' }}
+            aria-label="Toggle theme"
+          >
+            {dark ? <Sun style={{ width: 18, height: 18 }} /> : <Moon style={{ width: 18, height: 18 }} />}
+          </button>
+          {!showEditor && (
+            <button onClick={() => setShowEditor(true)} className="btn-primary" style={{ padding: '6px 16px', fontSize: 13 }}>
+              Create Invoice
+            </button>
+          )}
         </div>
       </div>
     </nav>
