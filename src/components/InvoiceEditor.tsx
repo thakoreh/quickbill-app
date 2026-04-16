@@ -799,74 +799,164 @@ export default function InvoiceEditor() {
                   {/* Logo Upload */}
                   <div style={cardStyles}>
                     <h3 style={sectionHeaderStyles}>Logo</h3>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      {invoice.logoUrl && (
-                        <img
-                          src={invoice.logoUrl}
-                          alt="Logo"
-                          style={{
-                            width: '64px',
-                            height: '64px',
-                            objectFit: 'contain',
-                            borderRadius: '6px',
-                            border: '1px solid var(--border)',
-                            padding: '4px',
-                          }}
-                        />
-                      )}
-                      <div>
-                        <label
-                          style={{
-                            display: 'inline-block',
-                            padding: '10px 20px',
-                            borderRadius: '6px',
-                            fontSize: '14px',
-                            fontWeight: 400,
-                            fontFamily: "'Source Sans 3', sans-serif",
-                            fontFeatureSettings: "'ss01'",
-                            border: '1px solid var(--border)',
-                            background: 'transparent',
-                            color: 'var(--heading)',
-                            cursor: 'pointer',
-                            transition: 'background 0.15s',
-                          }}
-                        >
-                          Upload Logo
-                          <input
-                            type="file"
-                            accept="image/*"
-                            style={{ display: 'none' }}
-                            onChange={e => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                const reader = new FileReader();
-                                reader.onload = (ev) => {
-                                  updateField('logoUrl', ev.target?.result as string);
-                                };
-                                reader.readAsDataURL(file);
-                              }
+                    {invoice.logoUrl ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                        <div style={{
+                          width: '80px',
+                          height: '80px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '8px',
+                          border: '1px solid var(--border)',
+                          background: 'var(--bg-dark)',
+                          padding: '8px',
+                        }}>
+                          <img
+                            src={invoice.logoUrl}
+                            alt="Logo preview"
+                            style={{
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              objectFit: 'contain',
                             }}
                           />
-                        </label>
-                        {invoice.logoUrl && (
+                        </div>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          <label
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              padding: '6px 14px',
+                              borderRadius: '6px',
+                              fontSize: '13px',
+                              fontWeight: 400,
+                              fontFamily: "'Source Sans 3', sans-serif",
+                              fontFeatureSettings: "'ss01'",
+                              border: '1px solid var(--border)',
+                              background: 'var(--card)',
+                              color: 'var(--heading)',
+                              cursor: 'pointer',
+                              transition: 'background 0.15s, border-color 0.15s',
+                            }}
+                            onMouseEnter={e => {
+                              (e.currentTarget as HTMLLabelElement).style.background = 'var(--primary-subtle)';
+                              (e.currentTarget as HTMLLabelElement).style.borderColor = 'var(--primary-light)';
+                            }}
+                            onMouseLeave={e => {
+                              (e.currentTarget as HTMLLabelElement).style.background = 'var(--card)';
+                              (e.currentTarget as HTMLLabelElement).style.borderColor = 'var(--border)';
+                            }}
+                          >
+                            Change
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: 'none' }}
+                              onChange={e => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  const reader = new FileReader();
+                                  reader.onload = (ev) => {
+                                    updateField('logoUrl', ev.target?.result as string);
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              }}
+                            />
+                          </label>
                           <button
                             onClick={() => updateField('logoUrl', '')}
                             style={{
-                              marginLeft: '8px',
-                              fontSize: '14px',
-                              color: '#dc2626',
-                              background: 'none',
-                              border: 'none',
-                              cursor: 'pointer',
-                              textDecoration: 'underline',
+                              padding: '6px 14px',
+                              borderRadius: '6px',
+                              fontSize: '13px',
+                              fontWeight: 400,
                               fontFamily: "'Source Sans 3', sans-serif",
+                              fontFeatureSettings: "'ss01'",
+                              color: '#dc2626',
+                              background: 'transparent',
+                              border: '1px solid rgba(220,38,38,0.3)',
+                              cursor: 'pointer',
+                              transition: 'background 0.15s',
+                            }}
+                            onMouseEnter={e => {
+                              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(220,38,38,0.08)';
+                            }}
+                            onMouseLeave={e => {
+                              (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
                             }}
                           >
                             Remove
                           </button>
-                        )}
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <label
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          padding: '24px',
+                          borderRadius: '8px',
+                          border: '2px dashed var(--border)',
+                          background: 'var(--bg-dark)',
+                          color: 'var(--body)',
+                          cursor: 'pointer',
+                          transition: 'background 0.15s, border-color 0.15s',
+                          textAlign: 'center',
+                        }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLLabelElement).style.borderColor = 'var(--primary-light)';
+                          (e.currentTarget as HTMLLabelElement).style.background = 'var(--primary-subtle)';
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLLabelElement).style.borderColor = 'var(--border)';
+                          (e.currentTarget as HTMLLabelElement).style.background = 'var(--bg-dark)';
+                        }}
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="17 8 12 3 7 8" />
+                          <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <span style={{
+                          fontSize: '14px',
+                          fontWeight: 400,
+                          fontFamily: "'Source Sans 3', sans-serif",
+                          fontFeatureSettings: "'ss01'",
+                          color: 'var(--heading)',
+                        }}>
+                          Upload Logo
+                        </span>
+                        <span style={{
+                          fontSize: '12px',
+                          fontWeight: 300,
+                          fontFamily: "'Source Sans 3', sans-serif",
+                          color: 'var(--body)',
+                        }}>
+                          PNG, JPG, or SVG
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          onChange={e => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onload = (ev) => {
+                                updateField('logoUrl', ev.target?.result as string);
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                        />
+                      </label>
+                    )}
                   </div>
                 </>
               )}

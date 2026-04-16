@@ -239,8 +239,65 @@ body {
 }
 
 @media print {
+  /* Hide all editor UI */
   .no-print { display: none !important; }
-  body { background: white; }
+
+  /* Force white background on everything */
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Reset the main container */
+  body > * {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Remove shadows globally */
+  * {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+
+  /* Make invoice preview fill the page */
+  .invoice-preview {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure the grid layout becomes single column for print */
+  .lg-grid-5cols {
+    display: block !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+  }
+
+  /* Remove sticky positioning */
+  .sticky-top-20 {
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 0.5cm;
+  }
+
+  /* Keep invoice colors exact for printing */
+  .invoice-preview,
+  .invoice-preview * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
 }
 
 input:focus, textarea:focus, select:focus {

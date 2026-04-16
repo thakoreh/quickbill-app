@@ -223,6 +223,11 @@ export default function InvoicePreview({ invoice, subtotal, tax, discount, total
               </a>
             </div>
           )}
+
+          {/* Watermark */}
+          <div style={{ textAlign: 'center', marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CLR_BORDER}` }}>
+            <span style={{ fontFamily: FONT_BODY, fontFeatureSettings: FONT_FEAT, fontSize: 10, fontWeight: 300, color: '#94a3b8', opacity: 0.5 }}>Created with QuickBill — quickbill.app</span>
+          </div>
         </div>
       </div>
     );
@@ -343,6 +348,11 @@ export default function InvoicePreview({ invoice, subtotal, tax, discount, total
               </a>
             </div>
           )}
+
+          {/* Watermark */}
+          <div style={{ textAlign: 'center', marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CLR_BORDER}` }}>
+            <span style={{ fontFamily: FONT_BODY, fontFeatureSettings: FONT_FEAT, fontSize: 10, fontWeight: 300, color: '#94a3b8', opacity: 0.5 }}>Created with QuickBill — quickbill.app</span>
+          </div>
         </div>
       </div>
     );
@@ -437,6 +447,11 @@ export default function InvoicePreview({ invoice, subtotal, tax, discount, total
               </a>
             </div>
           )}
+
+          {/* Watermark */}
+          <div style={{ textAlign: 'center', marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CLR_BORDER}` }}>
+            <span style={{ fontFamily: FONT_BODY, fontFeatureSettings: FONT_FEAT, fontSize: 10, fontWeight: 300, color: '#94a3b8', opacity: 0.5 }}>Created with QuickBill — quickbill.app</span>
+          </div>
         </div>
       </div>
     );
@@ -563,6 +578,11 @@ export default function InvoicePreview({ invoice, subtotal, tax, discount, total
             </a>
           </div>
         )}
+
+        {/* Watermark */}
+        <div style={{ textAlign: 'center', marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CLR_BORDER}` }}>
+          <span style={{ fontFamily: FONT_BODY, fontFeatureSettings: FONT_FEAT, fontSize: 10, fontWeight: 300, color: '#94a3b8', opacity: 0.5 }}>Created with QuickBill — quickbill.app</span>
+        </div>
       </div>
     </div>
   );
