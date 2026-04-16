@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <InvoiceProvider>
-      <div className="min-h-screen" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
+      <div style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--heading)', fontFamily: "'Source Sans 3', system-ui, sans-serif", fontFeatureSettings: '"ss01"' }}>
         <Navbar showEditor={showEditor} setShowEditor={setShowEditor} />
         {showEditor ? (
           <InvoiceEditor />

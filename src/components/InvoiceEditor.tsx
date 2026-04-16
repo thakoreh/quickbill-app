@@ -23,17 +23,15 @@ const cssVars = `
     --bg-dark: #f6f9fc;
     --success: #15be53;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --heading: #f0f2f8;
-      --body: #8b95a8;
-      --border: #1e2840;
-      --card: #0f1629;
-      --bg-dark: #060b18;
-      --label: #c0c8d8;
-      --primary-light: #7a6aff;
-      --primary-subtle: rgba(83,58,253,0.12);
-    }
+  .dark {
+    --heading: #f0f2f8;
+    --body: #8b95a8;
+    --border: #1e2840;
+    --card: #0f1629;
+    --bg-dark: #060b18;
+    --label: #c0c8d8;
+    --primary-light: #7a6aff;
+    --primary-subtle: rgba(83,58,253,0.12);
   }
 `;
 
@@ -290,7 +288,7 @@ export default function InvoiceEditor() {
                 padding: '4px',
                 borderRadius: '6px',
                 marginBottom: '24px',
-                background: '#f6f9fc',
+                background: 'var(--bg-dark)',
               }}
             >
               {tabs.map(tab => {
@@ -311,7 +309,7 @@ export default function InvoiceEditor() {
                       fontWeight: 400,
                       fontFamily: "'Source Sans 3', sans-serif",
                       fontFeatureSettings: "'ss01'",
-                      background: isActive ? '#ffffff' : 'transparent',
+                      background: isActive ? 'var(--card)' : 'transparent',
                       color: isActive ? 'var(--heading)' : 'var(--body)',
                       border: 'none',
                       cursor: 'pointer',
