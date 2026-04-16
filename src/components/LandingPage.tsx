@@ -1,12 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { FileText, Zap, Palette, Globe, Download, Shield, Check, Star, ArrowRight, Users, Clock, CreditCard } from 'lucide-react';
+import CheckoutModal from './CheckoutModal';
 
 interface LandingPageProps {
   onGetStarted: () => void;
 }
 
 export default function LandingPage({ onGetStarted }: LandingPageProps) {
+  const [showCheckout, setShowCheckout] = useState(false);
   return (
     <div>
       {/* Hero Section */}
@@ -259,15 +262,13 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://buy.stripe.com/bIYdSk8FufBt5XK8wP"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setShowCheckout(true)}
                 className="block w-full py-3 rounded-xl font-semibold text-white text-center transition-opacity hover:opacity-90"
                 style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }}
               >
                 Upgrade to Pro
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -328,6 +329,8 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
           </div>
         </div>
       </footer>
+
+      <CheckoutModal isOpen={showCheckout} onClose={() => setShowCheckout(false)} />
     </div>
   );
 }
