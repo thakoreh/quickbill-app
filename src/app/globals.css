@@ -306,6 +306,27 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(83, 58, 253, 0.1);
 }
 
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .lg-grid-5cols {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .sticky-top-20 {
+    position: static !important;
+    top: auto !important;
+  }
+  /* Force all multi-column grids to single column on mobile */
+  body [style*="grid-template-columns: repeat(2"] ,
+  body [style*="grid-template-columns: repeat(3"] ,
+  body [style*="grid-template-columns: repeat(4"] ,
+  body [style*="grid-template-columns: 1fr 1fr"] ,
+  body [style*="grid-template-columns: 1fr 60px"] ,
+  body [style*="grid-template-columns: 2fr 3fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* FAQ accordion */
 .faq-item { cursor: pointer; }
 .faq-answer {
